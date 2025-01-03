@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>DCSync Attack</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles4.css" type="text/css" />
+</head>
+<body>
+<div class='page'><h1 class='title'>DCSync Attack</h1><br/><p><em>L&#39;attacco è possibile solo se abbiamo già compromesso una macchina target e l&#39;account ha i seguenti permessi:</em></p><p><img src="images/133-1.png" alt="images/133-1.png" /></p><p><ol><li>1) <strong><span style="color:#071ba3;">1) Avviamo mimikatz sulla macchina target</span></strong></li></ol></p><p><ol><li>2) <strong><span style="color:#071ba3;">2) Eseguiamo:</span></strong></li></ol></p><p></p><p><span style="color:#ff0000;">lsadump::dcsync /domain:DOMAIN /user:administrator</span></p><p><ol><li>3) <strong><span style="color:#071ba3;">3) Il DC ci restituisce l&#39;hash NTLM che può essere utilizzato per l&#39;attacco Pass The Hash e la compromissione del DC stesso.</span></strong></li></ol></p></div>
+</body>
+</html>

